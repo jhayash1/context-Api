@@ -1,6 +1,6 @@
 import { Payment } from "./component/Payment";
 import Product from "./component/Product";
-import Header from "./component/header";
+import Header from "./component/Header";
 import {CartProvider} from "./contextApi/CreateContext"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
