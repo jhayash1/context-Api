@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CreateContext from "../contextApi/CreateContext";
 
-function Cart({ cart=[] }) {
+function Cart() {
+  const { cart } = useContext(CreateContext);
   const [add, setAdd] = useState({});
+  const navigate = useNavigate()
   let total = 0;
   cart.forEach((data,i)=>{
       const quantity= add[i] || 1;
       total= total+ data.price * quantity
 
   })
+
   if(cart.length===0) return <></>
 
   return (
@@ -42,6 +47,7 @@ function Cart({ cart=[] }) {
           </div>
         ))}
         <p>Total: {total}</p>
+        <button onClick={()=>navigate("/payment")}>Proceed to Payment</button>
       </div>
     </>
   );
